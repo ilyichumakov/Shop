@@ -77,6 +77,7 @@ namespace Shop
             }
             string bill = b.statement();
             Console.WriteLine(bill);
+            Console.ReadKey();
         }
     }
 }
