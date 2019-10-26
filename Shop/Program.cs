@@ -25,7 +25,7 @@ namespace Shop
             result = line.Split(':');
             int bonus = Convert.ToInt32(result[1].Trim());
             Customer customer = new Customer(name, bonus);
-            Bill b = new Bill(customer);
+            BillGenerator b = new BillGenerator(customer, new TXTBuilder());
             line = sr.ReadLine();
             result = line.Split(':');
             int goodsQty = Convert.ToInt32(result[1].Trim());
@@ -74,7 +74,7 @@ namespace Shop
                 int qty = Convert.ToInt32(result[2].Trim());
                 b.addGoods(new Item(g[gid - 1], qty, price));
             }
-            string bill = b.statement();
+            string bill = b.createBill();
             Console.WriteLine(bill);
             Console.ReadKey();
         }

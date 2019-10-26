@@ -43,15 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bill.cs" />
+    <Compile Include="BillGenerator.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Goods.cs" />
+    <Compile Include="HTMLBuilder.cs" />
+    <Compile Include="IPresenter.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegularGoods.cs" />
     <Compile Include="SalesGoods.cs" />
     <Compile Include="SpecialGoods.cs" />
+    <Compile Include="TXTBuilder.cs" />
     <Compile Include="UsageExample.cs" />
   </ItemGroup>
   <ItemGroup>
