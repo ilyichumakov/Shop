@@ -30,5 +30,42 @@ namespace Shop
         {
             return _title;
         }
+
+        public double getBonusRate()
+        {
+            double bonus = 0;
+            switch (_priceCode)
+            {
+                case Goods.REGULAR:
+                    bonus = 0.05;
+                    break;
+                case Goods.SALE:
+                    bonus = 0.01;
+                    break;
+                default:
+                    break;
+            }
+            return bonus;
+        }
+
+        public double getDiscountRate(int quantity)
+        {
+            double rate = 0;
+            switch (_priceCode)
+            {
+                case Goods.REGULAR:
+                    if(quantity > 2) rate = 0.03;
+                    break;
+                case Goods.SALE:
+                    if (quantity > 3) rate = 0.01;
+                    break;
+                case Goods.SPECIAL_OFFER:
+                    if (quantity > 10) rate = 0.005;
+                    break;
+                default:
+                    break;
+            }
+            return rate;
+        }
     }
 }

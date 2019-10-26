@@ -29,5 +29,20 @@ namespace Shop
         {
             return _Goods;
         }
+
+        public int getBonus()
+        {
+            return (int) (this.getGoods().getBonusRate() * getSum());           
+        }
+
+        public double getDiscount()
+        {            
+            return Math.Round(this.getGoods().getDiscountRate(this.getQuantity()) * getSum(), 2);            
+        }
+
+        public double getSum()
+        {
+            return this.getQuantity() * this.getPrice();
+        }
     }
 }
