@@ -18,9 +18,9 @@ namespace ShopTests
         [SetUp]
         public void CreateObjects()
         {
-            desk = new Goods("School Desk", Goods.REGULAR);
-            chair = new Goods("Comfortable chair", Goods.SALE);
-            pencil = new Goods("Cheap pencil", Goods.SPECIAL_OFFER);
+            desk = new RegularGoods("School Desk");
+            chair = new SalesGoods("Comfortable chair");
+            pencil = new SpecialGoods("Cheap pencil");
             student = new Customer("Chumakoff", 0);
             basket = new Bill(student);
             //basket.addGoods(new Item(desk, 1, 65.99)); // one desk
@@ -33,9 +33,10 @@ namespace ShopTests
 
         [Test]
         public void goodsTest()
-        {            
-            int type = desk.getPriceCode();
-            Assert.AreEqual(type, 0);
+        {
+            Goods g = new RegularGoods("test");
+            Type myobj = typeof(RegularGoods);
+            Assert.AreEqual(myobj, g.GetType());
         }
 
         [Test]
@@ -124,7 +125,7 @@ namespace ShopTests
         [Test]
         public void bonusWithdraw()
         {
-            pencil = new Goods("Cheap pencil", Goods.SPECIAL_OFFER);
+            pencil = new SpecialGoods("Cheap pencil");
             student = new Customer("Chumakoff", 17);
             basket = new Bill(student);
             basket.addGoods(new Item(desk, 20, 50)); // 20 desks for 50$
@@ -136,7 +137,7 @@ namespace ShopTests
         [Test]
         public void negativeBonusWithdraw()
         {
-            pencil = new Goods("Cheap pencil", Goods.SPECIAL_OFFER);
+            pencil = new SpecialGoods("Cheap pencil");
             student = new Customer("Chumakoff", 3000);
             basket = new Bill(student);
             basket.addGoods(new Item(desk, 20, 50)); // 20 desks for 50$

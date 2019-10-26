@@ -40,20 +40,19 @@ namespace Shop
                 result = line.Split(':');
                 result = result[1].Trim().Split();
                 string type = result[1].Trim();
-                int t = 0;
+                                
                 switch (type)
                 {
-                    case "REG":
-                        t = Goods.REGULAR;
+                    case "REG":                        
+                        g[i] = new RegularGoods(result[0]);
                         break;
-                    case "SAL":
-                        t = Goods.SALE;
+                    case "SAL":                       
+                        g[i] = new SalesGoods(result[0]);
                         break;
-                    case "SPO":
-                        t = Goods.SPECIAL_OFFER;
+                    case "SPO":                        
+                        g[i] = new SpecialGoods(result[0]);
                         break;
-                }
-                g[i] = new Goods(result[0], t);
+                }                               
             }
             // read items count          
             do

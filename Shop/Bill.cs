@@ -33,8 +33,8 @@ namespace Shop
                 int bonus = each.getBonus();
                 double discount = each.getDiscount();                                 
                 
-                double thisAmount = each.getQuantity() * each.getPrice() - discount; // total price for this item
-                thisAmount -= getUsedBonus(each, thisAmount);
+                double thisAmount = each.getQuantity() * each.getPrice() - discount; // total price for this item                
+                thisAmount -= each.getUsedBonus(_customer, thisAmount);
 
                 // accumulate a string describing prosuct row in bill
                 result += GetItemRow(each, thisAmount, discount, bonus); 
@@ -47,17 +47,7 @@ namespace Shop
             _customer.receiveBonus(totalBonus);
             return result;
         }
-
-        private int getUsedBonus(Item product, double price)
-        {
-            int usedBonus = 0;
-            if ((product.getGoods().getPriceCode() == Goods.REGULAR) && product.getQuantity() > 5)
-                usedBonus += _customer.useBonus((int)(price));
-            if ((product.getGoods().getPriceCode() == Goods.SPECIAL_OFFER) && product.getQuantity() > 1)
-                usedBonus += _customer.useBonus((int)(price));
-            return usedBonus;
-        }
-
+        
         private string GetHeader() // returns head of the bill table
         {
             String result = "Счет для " + _customer.getName() + "\n";

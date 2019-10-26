@@ -44,5 +44,15 @@ namespace Shop
         {
             return this.getQuantity() * this.getPrice();
         }
+
+        public int getUsedBonus(Customer _customer, double price)
+        {
+            int usedBonus = 0;
+            if ((_Goods.GetType() == typeof(RegularGoods)) && _quantity > 5)
+                usedBonus += _customer.useBonus((int)(price));
+            if ((_Goods.GetType() == typeof(SpecialGoods)) && _quantity > 1)
+                usedBonus += _customer.useBonus((int)(price));
+            return usedBonus;
+        }
     }
 }
