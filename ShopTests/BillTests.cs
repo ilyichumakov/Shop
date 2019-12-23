@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using Shop;
+using System.IO;
 
 namespace ShopTests
 {
@@ -146,5 +147,30 @@ namespace ShopTests
             Assert.AreEqual(actual, expected);
         }
 
+
+        [Test]
+        public void createPepsiFromFile()
+        {
+            string filename = "BillInfo.yaml";
+
+            FileStream fs = new FileStream(filename, FileMode.Open);
+            StreamReader sr = new StreamReader(fs); 
+            string actual = Program.makeBill(sr);
+            string expected = "Счет для Test\n\tНазвание\tЦена\tКол-воСтоимость\tСкидка\tСумма\tБонус\n\tCola\t\t65\t6\t390\t11,7\t368,3\t19\n\tPepsi\t\t50\t3\t150\t0\t150\t1\n\tFanta\t\t35\t1\t35\t0\t35\t0\nСумма счета составляет 553,3\nВы заработали 20 бонусных балов";
+            Assert.AreEqual(actual, expected);
+        }
+
+        [Test]
+        public void createPepsiWithClass()
+        {
+            string filename = "BillInfo.yaml";
+
+            FileStream fs = new FileStream(filename, FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            YAMLFile manager = new YAMLFile(sr, filename);
+            BillGenerator res = manager.getData(new TXTBuilder());
+            string expected = "Счет для Test\n\tНазвание\tЦена\tКол-воСтоимость\tСкидка\tСумма\tБонус\n\tCola\t\t65\t6\t390\t11,7\t368,3\t19\n\tPepsi\t\t50\t3\t150\t0\t150\t1\n\tFanta\t\t35\t1\t35\t0\t35\t0\nСумма счета составляет 553,3\nВы заработали 20 бонусных балов";
+            Assert.AreEqual(expected, res.createBill());
+        }
     }
 }

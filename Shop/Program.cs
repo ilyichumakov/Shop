@@ -7,15 +7,29 @@ using System.IO;
 
 namespace Shop
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             string filename = "BillInfo.yaml";
             if (args.Length == 1)
                 filename = args[0];
+            
             FileStream fs = new FileStream(filename, FileMode.Open);
             StreamReader sr = new StreamReader(fs);
+            YAMLFile manager = new YAMLFile(sr, filename);
+            BillGenerator res = manager.getData(new TXTBuilder());
+            Console.WriteLine(res.createBill());
+            sr.Close();
+            fs.Close();
+            Console.ReadKey();
+        }
+
+        public static string makeBill(TextReader sr)
+        {
+            //FileStream fs = new FileStream(filename, FileMode.Open);
+            //StreamReader sr = new StreamReader(fs);
+
             // read customer
             string line = sr.ReadLine();
             string[] result = line.Split(':');
@@ -32,7 +46,6 @@ namespace Shop
             Goods[] g = new Goods[goodsQty];
             for (int i = 0; i < g.Length; i++)
             {
-                // Пропустить комментарии
                 do
                 {
                     line = sr.ReadLine();
@@ -40,21 +53,20 @@ namespace Shop
                 result = line.Split(':');
                 result = result[1].Trim().Split();
                 string type = result[1].Trim();
-                                
+
                 switch (type)
                 {
-                    case "REG":                        
+                    case "REG":
                         g[i] = new RegularGoods(result[0]);
                         break;
-                    case "SAL":                       
+                    case "SAL":
                         g[i] = new SalesGoods(result[0]);
                         break;
-                    case "SPO":                        
+                    case "SPO":
                         g[i] = new SpecialGoods(result[0]);
                         break;
-                }                               
+                }
             }
-            // read items count          
             do
             {
                 line = sr.ReadLine();
@@ -62,7 +74,7 @@ namespace Shop
             result = line.Split(':');
             int itemsQty = Convert.ToInt32(result[1].Trim());
             for (int i = 0; i < itemsQty; i++)
-            {              
+            {
                 do
                 {
                     line = sr.ReadLine();
@@ -75,8 +87,7 @@ namespace Shop
                 b.addGoods(new Item(g[gid - 1], qty, price));
             }
             string bill = b.createBill();
-            Console.WriteLine(bill);
-            Console.ReadKey();
+            return bill;
         }
     }
 }
