@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Shop.Strategy
 {
-    public interface IBonus
+    public class QuantityBonus : IBonus
     {
-        int GetBonus(double price);
+        public int GetBonus(double price)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

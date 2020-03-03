@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shop.Strategy
 {
-    public interface IBonus
+    public interface IUseBonusStrategy
     {
-        int GetBonus(double price);
+        int GetUsedBonus(int quantity, double price, Customer customer);
     }
 }

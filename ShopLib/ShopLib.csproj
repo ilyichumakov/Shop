@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{75C52E83-E021-4C34-A870-06EE6F921C14}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Shop</RootNamespace>
-    <AssemblyName>Shop</AssemblyName>
+    <ProjectGuid>{60E2FA02-37CD-4B28-A9F5-155A0EDD3766}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopLib</RootNamespace>
+    <AssemblyName>ShopLib</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,37 +41,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractContentFile.cs" />
     <Compile Include="BillGenerator.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Goods.cs" />
+    <Compile Include="GoodsFactory.cs" />
     <Compile Include="HTMLBuilder.cs" />
+    <Compile Include="IContentFile.cs" />
     <Compile Include="IPresenter.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegularGoods.cs" />
     <Compile Include="SalesGoods.cs" />
     <Compile Include="SpecialGoods.cs" />
-    <Compile Include="Strategy\FixedBonusUsage.cs" />
-    <Compile Include="Strategy\IUseBonusStrategy.cs" />
-    <Compile Include="Strategy\QuantityBonus.cs" />
-    <Compile Include="Strategy\SummaryBonus.cs" />
     <Compile Include="Strategy\FixedBonus.cs" />
+    <Compile Include="Strategy\FixedBonusUsage.cs" />
     <Compile Include="Strategy\FixedDiscount.cs" />
     <Compile Include="Strategy\IBonus.cs" />
     <Compile Include="Strategy\ISaleStrategy.cs" />
+    <Compile Include="Strategy\IUseBonusStrategy.cs" />
+    <Compile Include="Strategy\QuantityBonus.cs" />
     <Compile Include="Strategy\QuantityDiscount.cs" />
+    <Compile Include="Strategy\SummaryBonus.cs" />
     <Compile Include="Strategy\SummaryDiscount.cs" />
     <Compile Include="Strategy\UseQuantityBonus.cs" />
     <Compile Include="TXTBuilder.cs" />
-    <Compile Include="UsageExample.cs" />
-    <Compile Include="GoodsFactory.cs" />
-    <Compile Include="IContentFile.cs" />
     <Compile Include="YAMLFile.cs" />
-    <Compile Include="AbstractContentFile.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

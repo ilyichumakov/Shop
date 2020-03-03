@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop
+namespace ShopLib
 {
-    /*public class RegularGoods : Goods
+    /*public class SpecialGoods : Goods
     {
-        public RegularGoods(String title) : base(title)
+        public SpecialGoods(String title) : base(title)
         {
         }
-        
+
         public override double getBonusRate()
-        {                 
-            return 0.05;
+        {
+            return 0;
         }
 
         public override double getDiscountRate(int quantity)
         {
-            double rate = 0;            
-            if (quantity > 2) rate = 0.03;                    
+            double rate = 0;
+            if (quantity > 10) rate = 0.005;
             return rate;
         }
 

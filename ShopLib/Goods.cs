@@ -1,7 +1,7 @@
 ﻿using System;
-using Shop.Strategy;
+using ShopLib.Strategy;
 
-namespace Shop
+namespace ShopLib
 {
     public class Goods
     {

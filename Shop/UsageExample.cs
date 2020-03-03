@@ -10,8 +10,8 @@ namespace Shop
     {
         static void Example(string[] args)
         {
-            Goods cola = new RegularGoods("Cola");
-            Goods pepsi = new SalesGoods("Pepsi");
+            Goods cola = GoodsFactory.Create("REG", "Cola", DateTime.Parse("11.11.2019"));
+            Goods pepsi = GoodsFactory.Create("SAL", "Pepsi", DateTime.Parse("11.11.2019"));
             Item i1 = new Item(cola, 6, 65);
             Item i2 = new Item(pepsi, 3, 50);
             Customer x = new Customer("test", 10);

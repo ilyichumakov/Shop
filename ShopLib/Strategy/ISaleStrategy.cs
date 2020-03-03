@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Strategy
+namespace ShopLib.Strategy
 {
-    public interface IBonus
+    public interface ISaleStrategy
     {
-        int GetBonus(double price);
+        double GetDiscount(int quantity, double price);
     }
 }

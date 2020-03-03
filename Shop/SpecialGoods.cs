@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop
 {
-    public class SpecialGoods : Goods
+    /*public class SpecialGoods : Goods
     {
         public SpecialGoods(String title) : base(title)
         {
@@ -24,5 +24,5 @@ namespace Shop
             return rate;
         }
 
-    }
+    }*/
 }
